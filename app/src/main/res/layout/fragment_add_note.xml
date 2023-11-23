@@ -28,43 +28,45 @@
                 android:layout_height="wrap_content"
                 android:text="Add note"
                 android:textAlignment="center"
-                android:textColor="@color/gray_dark"
+                android:textColor="@color/gray_text"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/note_name"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/custom_shape"
                 android:drawablePadding="8dp"
                 android:hint="Name:"
-                android:maxLength="20"
-                android:maxLines="1"
-                android:padding="8dp"
+                android:maxLength="55"
+                android:scrollbars="vertical"
+                android:maxLines="2"
+                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="#757575" />
 
             <EditText
                 android:id="@+id/note_description"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_shape"
+                android:scrollbars="vertical"
                 android:drawablePadding="8dp"
-                android:hint="Description"
-                android:inputType="textLongMessage"
-                android:padding="8dp"
+                android:maxLength="3000"
+                android:hint="Description:"
+                android:padding="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="#757575" />
+                android:textColorHint="#757575"/>
 
             <Button
                 android:id="@+id/add_button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/gray_dark"
+                android:backgroundTint="@color/gray_text"
                 android:text="ENTER"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />

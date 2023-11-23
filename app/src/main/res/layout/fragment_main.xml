@@ -9,14 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:listitem="@layout/note_item" />
+        tools:listitem="@layout/item_note"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button"
+    <Button
+        android:id="@+id/button_to_fragment"
+        android:text="ADD NOTE"
+        android:backgroundTint="@color/gray_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add" />
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp" />
 
 </LinearLayout>

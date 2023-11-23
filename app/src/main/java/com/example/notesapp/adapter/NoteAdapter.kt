@@ -7,28 +7,36 @@ import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.R
+import com.example.notesapp.databinding.FragmentAddNoteBinding
+import com.example.notesapp.databinding.ItemNoteBinding
 import com.example.notesapp.model.NoteData
 
 class NoteAdapter(var noteList: ArrayList<NoteData>) :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title = view.findViewById<TextView>(R.id.nTitle)
-        val subtitle = view.findViewById<TextView>(R.id.nSubTitle)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.note_item, parent, false)
-        return NoteViewHolder(adapterLayout)
+        return NoteViewHolder(
+            ItemNoteBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false)
+        )
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val itemList = noteList[position]
-        holder.title.text = itemList.noteName
-        holder.subtitle.text = itemList.noteDescription
+        holder.bind(itemList)
     }
 
     override fun getItemCount() = noteList.size
+
+    class NoteViewHolder(private val binding: ItemNoteBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(note: NoteData){
+            binding.nameTextView.text = note.noteName
+            binding.descriptionTextView.text = note.noteDescription
+        }
+
+    }
 }
 

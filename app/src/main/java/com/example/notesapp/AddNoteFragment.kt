@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.activityViewModels
 import com.example.notesapp.model.NoteData
 import androidx.fragment.app.viewModels
 import com.example.notesapp.databinding.FragmentAddNoteBinding
@@ -15,7 +16,7 @@ class AddNoteFragment : Fragment() {
 
     private var binding: FragmentAddNoteBinding? = null
 
-    private val viewModel: NoteViewModel by viewModels()
+    private val viewModel: NoteViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +32,12 @@ class AddNoteFragment : Fragment() {
         binding?.addButton?.setOnClickListener {
             val noteData = NoteData(binding?.noteName?.text.toString(), binding?.noteDescription?.text.toString())
 
-            viewModel.noteList.value?.add(noteData)
-            viewModel.noteList.value = viewModel.noteList.value
+
+            val list = arrayListOf<NoteData>()
+            list.addAll(viewModel.noteList.value!!)
+            list.add(noteData)
+            viewModel.noteList.value = list
+
 
             requireActivity().supportFragmentManager.popBackStack()
         }

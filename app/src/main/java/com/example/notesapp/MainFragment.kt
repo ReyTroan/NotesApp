@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.adapter.NoteAdapter
@@ -18,40 +19,37 @@ class MainFragment : Fragment() {
 
     private var binding: FragmentMainBinding? = null
 
-    private val viewModel: NoteViewModel by viewModels()
+    private val viewModel: NoteViewModel by activityViewModels()
 
-    private var noteAdapter = NoteAdapter(ArrayList())
+    private val noteAdapter by lazy {
+        NoteAdapter(viewModel.noteList.value ?: ArrayList())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding = FragmentMainBinding.inflate(inflater, container, false).apply {
+            recyclerView.adapter = noteAdapter
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            buttonToFragment.setOnClickListener { navigateToAddNoteFragment() }
+        }
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val noteList = viewModel.noteList.value
-        if (noteList != null) {
-            noteAdapter = NoteAdapter(noteList)
-            binding?.recyclerView?.adapter = noteAdapter
-        } else {
-            Toast.makeText(context, "Заметки еще не добавлены", Toast.LENGTH_SHORT).show()
-        }
-        binding?.recyclerView?.layoutManager = LinearLayoutManager(context)
-
-        binding?.button?.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, AddNoteFragment())
-                .addToBackStack(null)
-                .commit()
-        }
-
         viewModel.noteList.observe(viewLifecycleOwner) { newList ->
-            noteAdapter.noteList = newList ?: ArrayList()
+            (newList ?: ArrayList()).also { noteAdapter.noteList = it }
             noteAdapter.notifyDataSetChanged()
         }
+    }
+
+    private fun navigateToAddNoteFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, AddNoteFragment())
+            .addToBackStack(null)
+            .commit()
     }
 }

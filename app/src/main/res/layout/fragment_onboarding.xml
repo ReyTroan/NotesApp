@@ -25,8 +25,10 @@
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/circle_indicator"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="10dp"
         android:layout_marginBottom="16dp"
+        app:ci_drawable="@drawable/shape_indicator_on"
+        app:ci_drawable_unselected="@drawable/shape_indicator_on"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

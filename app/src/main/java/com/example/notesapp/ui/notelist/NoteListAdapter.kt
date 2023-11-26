@@ -1,18 +1,13 @@
-package com.example.notesapp.adapter
+package com.example.notesapp.ui.notelist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.example.notesapp.R
-import com.example.notesapp.databinding.FragmentAddNoteBinding
 import com.example.notesapp.databinding.ItemNoteBinding
 import com.example.notesapp.model.NoteData
 
-class NoteAdapter(var noteList: ArrayList<NoteData>) :
-    RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteListAdapter(var noteList: ArrayList<NoteData>) :
+    RecyclerView.Adapter<NoteListAdapter.NoteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(

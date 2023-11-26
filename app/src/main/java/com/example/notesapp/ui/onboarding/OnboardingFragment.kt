@@ -1,10 +1,12 @@
-package com.example.notesapp
+package com.example.notesapp.ui.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.notesapp.ui.login.LoginFragment
+import com.example.notesapp.R
 import com.example.notesapp.databinding.FragmentOnboardingBinding
 
 class OnboardingFragment : Fragment() {

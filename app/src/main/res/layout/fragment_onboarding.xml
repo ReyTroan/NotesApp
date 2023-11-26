@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        android:id="@+id/skip_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Skip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_Pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@id/circle_indicator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/skip_button" />
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp" />
 
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/circle_indicator"
         android:layout_width="wrap_content"
         android:layout_height="10dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
         app:ci_drawable="@drawable/shape_indicator_on"
-        app:ci_drawable_unselected="@drawable/shape_indicator_on"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:ci_drawable_unselected="@drawable/shape_indicator_on" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/skip_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_shape"
+        android:backgroundTint="@color/gray_text"
+        android:text="Skip" />
+
+</LinearLayout>

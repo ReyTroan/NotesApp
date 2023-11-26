@@ -1,22 +1,20 @@
-package com.example.notesapp
+package com.example.notesapp.ui.addnote
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.activityViewModels
 import com.example.notesapp.model.NoteData
-import androidx.fragment.app.viewModels
 import com.example.notesapp.databinding.FragmentAddNoteBinding
+import com.example.notesapp.ui.notelist.NoteListViewModel
 
 class AddNoteFragment : Fragment() {
 
     private var binding: FragmentAddNoteBinding? = null
 
-    private val viewModel: NoteViewModel by activityViewModels()
+    private val viewModel: NoteListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

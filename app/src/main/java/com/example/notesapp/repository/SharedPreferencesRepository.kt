@@ -16,7 +16,7 @@ class SharedPreferencesRepository(private val context: Context) {
 
     fun setAppOpen() {
         preferences.edit {
-         putBoolean(IS_APP_OPEN, true)
+         putBoolean(IS_APP_OPEN, false)
         }
     }
 }

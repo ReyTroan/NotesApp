@@ -22,7 +22,7 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/note_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                 android:textColor="@color/black"
                 android:textColorHint="#757575" />
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/note_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,12 +61,15 @@
                 android:textColor="@color/black"
                 android:textColorHint="#757575"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/add_button"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_shape"
                 android:backgroundTint="@color/gray_text"
+                android:textStyle="bold"
                 android:text="ENTER"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
